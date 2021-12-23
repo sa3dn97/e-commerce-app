@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "@schematics/angular": "^9.1.0"
+    "@schematics/angular": "^9.1.0",
+    "ngx-toastr": "^14.2.1"
   }
 }
