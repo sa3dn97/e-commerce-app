@@ -1,6 +1,8 @@
 {
   "dependencies": {
     "@schematics/angular": "^9.1.0",
-    "ngx-toastr": "^14.2.1"
+    "ngx-bootstrap": "^6.0.0",
+    "ngx-toastr": "^14.2.1",
+    "xng-breadcrumb": "^7.0.0"
   }
 }
