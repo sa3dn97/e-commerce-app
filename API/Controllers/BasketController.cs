@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using API.DTOs;
 // using API.DTOs;
 using AutoMapper;
 using Core.Entities;
@@ -27,9 +28,9 @@ namespace API.Controllers
         [HttpPost]
 
     
-        public async Task<ActionResult<CustomerBasket>> UpdateBasket(CustomerBasket basket)
+        public async Task<ActionResult<CustomerBasket>> UpdateBasket(CustomerBasketDTO basket)
         {
-            var customerBasket = _mapper.Map<CustomerBasket, CustomerBasket>(basket);
+            var customerBasket = _mapper.Map<CustomerBasketDTO, CustomerBasket>(basket);
             var updatedBasket = await _basketRepository.UpdateBasketAsync(customerBasket);
             return Ok(updatedBasket);
         }
