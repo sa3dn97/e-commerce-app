@@ -9,7 +9,9 @@ import { LoadingService } from "../services/loading.service";
  export class LoadingInterceptors implements HttpInterceptor{
      constructor(private busyService:LoadingService){}
      intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-         this.busyService.loading();
+         if(!req.url.includes('emailexists')){
+            this.busyService.loading();
+         }
          return next.handle(req).pipe(
             delay(1000),
             finalize(()=> {
