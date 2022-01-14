@@ -1,4 +1,11 @@
+
 using Microsoft.AspNetCore.Mvc;
+namespace API.Controllers
+{
+    public class BaseAPIController
+    {
+    }
+}
 
 namespace API.Controllers
 {

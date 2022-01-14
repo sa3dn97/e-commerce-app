@@ -9,6 +9,7 @@ using Core.Entitties;
 using Core.Interfaces;
 using Core.Spacifications;
 using Core.Specification;
+using Core.Specifications;
 using Infrastructure.Data;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -43,7 +44,7 @@ namespace API.Controllers
             [FromQuery]ProductSpecParams productPrams)
         {
             var spec = new ProductsWithTypesAndBrandsSpecification(productPrams);   
-            var countSpec = new ProductWithFilterForCountSpecification(productPrams);
+            var countSpec = new ProductWithFiltersForCountSpec(productPrams);
             var totalItems = await _productsRepo.CountAsync(countSpec );
             var Products = await _productsRepo.ListAsync(spec);
             var data = _mapper

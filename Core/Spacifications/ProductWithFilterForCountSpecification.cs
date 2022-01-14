@@ -1,21 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Core.Entities;
 using Core.Entitties;
-using Core.Spacifications;
+using Core.Specification;
 
-namespace Core.Specification
+namespace Core.Specifications
 {
-    public class ProductWithFilterForCountSpecification : BaseSpacifications<product>
+    public class ProductWithFiltersForCountSpec : BaseSpecification<product>
     {
-        public ProductWithFilterForCountSpecification(ProductSpecParams productParams) 
-            : base(x => 
-            (String.IsNullOrEmpty(productParams.Search) || x.Name.ToLower().Contains(productParams.Search)) &&
-            (!productParams.BrandId.HasValue || x.ProductBrandId == productParams.BrandId) &&
-            (!productParams.TypeId.HasValue || x.ProductTypeId == productParams.TypeId)
-        )
-        {
-            
-        }
+        public ProductWithFiltersForCountSpec(ProductSpecParams productParams)
+       : base(x => 
+                (string.IsNullOrEmpty(productParams.Search) || x.Name.ToLower().Contains
+                (productParams.Search)) && 
+                (!productParams.BrandId.HasValue || x.ProductBrandId == productParams.BrandId) &&
+                (!productParams.TypeId.HasValue || x.ProductTypeId == productParams.TypeId)
+            )
+            {
+                
+            }
     }
 }

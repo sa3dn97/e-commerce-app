@@ -2,10 +2,11 @@ using System;
 using System.Linq.Expressions;
 using Core.Entitties;
 using Core.Specification;
+using Core.Specifications;
 
 namespace Core.Spacifications
 {
-    public class ProductsWithTypesAndBrandsSpecification : BaseSpacifications<product>
+    public class ProductsWithTypesAndBrandsSpecification : BaseSpecification<product>
     {
         public ProductsWithTypesAndBrandsSpecification(ProductSpecParams productprams)
             :base(x =>
@@ -17,20 +18,20 @@ namespace Core.Spacifications
         {
             AddInclude(x => x.ProductType);
             AddInclude(x => x.ProductBrand);
-            AddOredrBy(x => x.Name);
+            AddOrderBy(x => x.Name);
             ApplyPaging(productprams.PageSize*(productprams.PageIndex-1),productprams.PageSize );
             if (!String.IsNullOrEmpty(productprams.Sort))
             {
                 switch(productprams.Sort)
                 {
                     case"priceAsc":
-                        AddOredrBy( p => p.Price);
+                        AddOrderBy( p => p.Price);
                         break;
                     case"priceDesc":
-                        AddOrderByDecending(p => p.Price);
+                        AddOrderByDesc(p => p.Price);
                         break;
                     default:
-                        AddOredrBy(n => n.Name);
+                        AddOrderBy(n => n.Name);
                         break;
 
                  }
