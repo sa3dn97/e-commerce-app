@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './core/guards/auth.guard';
 import { NotFoundComponent } from './core/not-found/not-found.component';
@@ -21,6 +21,14 @@ const routes: Routes = [
   canActivate:[AuthGuard],
   loadChildren:()=> import('./checkout/checkout.module').then(mod => mod.CheckoutModule),
     data:{breacrumb:'Checkout'}},
+  {path:'checkout',
+  canActivate:[AuthGuard],
+  loadChildren:()=> import('./checkout/checkout.module').then(mod => mod.CheckoutModule),
+    data:{breacrumb:'Checkout'}},
+  {path:'orders',
+    canActivate:[AuthGuard],
+    loadChildren:()=> import('./orders/orders.module').then(mod => mod.OrdersModule),
+      data:{breacrumb:'Orders'}},
     {path:'account',loadChildren:()=> import('./account/account.module').then(mod => mod.AccountModule),
     data:{breacrumb: {skip : true}}},
   {path:'**',redirectTo:'not-found',pathMatch:'full'}
