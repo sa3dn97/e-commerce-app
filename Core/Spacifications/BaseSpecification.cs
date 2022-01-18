@@ -22,29 +22,30 @@ namespace Core.Specifications
 
         public Expression<Func<T, object>> OrderBy {get; private set;}
 
-        public Expression<Func<T, object>> OrderByDesc {get; private set;}
+        public Expression<Func<T, object>> OrderByDescending {get; private set;}
 
-        public int Take {get; private set;}
+       
+         public int Take {get; private set;}
 
         public int Skip {get; private set;}
 
         public bool IsPagingEnabled{get; private set;}
 
-        public Expression<Func<T, object>> OrderByDecending => throw new NotImplementedException();
-
         protected void AddInclude(Expression<Func<T, object>> includeExpression)
         {
             Includes.Add(includeExpression);
         }
-
-        protected void AddOrderBy(Expression<Func<T, object>> orderByExpression)
+        
+        protected void AddOrderBy(Expression<Func<T, object>> orderByDExpression)
         {
-            OrderBy = orderByExpression;
+            OrderBy = orderByDExpression;
         }
 
-        protected void AddOrderByDesc(Expression<Func<T, object>> orderByDescExpression)
+      
+
+        protected void AddOrderByDescending(Expression<Func<T, object>> orderByDescExpression)
         {
-            OrderByDesc = orderByDescExpression;
+            OrderByDescending = orderByDescExpression;
         }
 
         protected void ApplyPaging(int skip, int take)

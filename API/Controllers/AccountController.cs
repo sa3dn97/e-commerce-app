@@ -6,6 +6,7 @@ using API.DTOs;
 using API.Errors;
 using API.Extensions;
 using AutoMapper;
+using Core.Entities;
 using Core.Entities.Identity;
 using Core.Interfaces;
 using Microsoft.AspNetCore.Authorization;
@@ -32,7 +33,7 @@ namespace API.Controllers
         [HttpGet]
         public async Task<ActionResult<UserDto>> GetCurrentUser()
         {
-            //var email = HttpContext.User?.Claims?.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value;
+            var email = HttpContext.User?.Claims?.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value;
 
             var user = await _userManager.FindByEmailFromClaimsPrinciple(HttpContext.User);
 
@@ -55,7 +56,7 @@ namespace API.Controllers
         public async Task<ActionResult<AddressDto>> GetUserAddress()
         {
 
-            var user = await _userManager.FindUserByClaimsPrincipleWithAddressAsync(HttpContext.User);
+            var user = await _userManager.FindByEmailFromClaimsPrinciple(HttpContext.User);
 
             return _mapper.Map<Address, AddressDto>(user.Address);
         }
@@ -64,7 +65,7 @@ namespace API.Controllers
         [HttpPut("address")]
         public async Task<ActionResult<AddressDto>> UpdateUserAddress(AddressDto address)
         {
-            var user = await _userManager.FindUserByClaimsPrincipleWithAddressAsync(HttpContext.User);
+            var user = await _userManager.FindByEmailFromClaimsPrinciple(HttpContext.User);
 
             user.Address = _mapper.Map<AddressDto, Address>(address);
 

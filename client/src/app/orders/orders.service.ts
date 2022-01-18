@@ -1,6 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,7 @@ export class OrdersService {
     return this.http.get(this.baseUrl + 'orders');
   }
 
-  getOrderDetails(id: number) {
+  getOrderDetailed(id: number) {
     return this.http.get(this.baseUrl + 'orders/' + id);
   }
 }

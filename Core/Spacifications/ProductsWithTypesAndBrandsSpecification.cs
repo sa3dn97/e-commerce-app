@@ -1,6 +1,6 @@
 using System;
 using System.Linq.Expressions;
-using Core.Entitties;
+using Core.Entities;
 using Core.Specification;
 using Core.Specifications;
 
@@ -28,7 +28,7 @@ namespace Core.Spacifications
                         AddOrderBy( p => p.Price);
                         break;
                     case"priceDesc":
-                        AddOrderByDesc(p => p.Price);
+                        AddOrderByDescending(p => p.Price);
                         break;
                     default:
                         AddOrderBy(n => n.Name);

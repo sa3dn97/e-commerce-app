@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using System.Reflection;
 using Core.Entities.OrderAggregate;
-using Core.Entitties;
+using Core.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 

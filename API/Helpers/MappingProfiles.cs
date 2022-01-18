@@ -2,9 +2,7 @@ using API.Dtos;
 using API.DTOs;
 using AutoMapper;
 using Core.Entities;
-using Core.Entities.Identity;
 using Core.Entities.OrderAggregate;
-using Core.Entitties;
 
 namespace API.Helpers
 {

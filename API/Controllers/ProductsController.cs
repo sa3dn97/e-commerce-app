@@ -5,7 +5,7 @@ using API.Dtos;
 using API.Errors;
 using API.Helpers;
 using AutoMapper;
-using Core.Entitties;
+using Core.Entities;
 using Core.Interfaces;
 using Core.Spacifications;
 using Core.Specification;
@@ -35,9 +35,8 @@ namespace API.Controllers
             _producttypeRepo = producttypeRepo;
             _productBrandRepo = productBrandRepo;
             _productsRepo = productsRepo;
-
-
         }
+
 
         [HttpGet]
         public async Task<ActionResult<Pagination<ProductToReturnDto>>> GetProducts(

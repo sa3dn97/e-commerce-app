@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Core.Entities.OrderAggregate;
-using Core.Entitties;
+using Core.Entities;
 using Microsoft.Extensions.Logging;
 
 namespace Infrastructure.Data

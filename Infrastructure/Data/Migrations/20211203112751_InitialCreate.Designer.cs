@@ -17,7 +17,7 @@ namespace Infrastructure.Data.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.4");
 
-            modelBuilder.Entity("Core.Entitties.ProductBrand", b =>
+            modelBuilder.Entity("Core.Entities.ProductBrand", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -31,7 +31,7 @@ namespace Infrastructure.Data.Migrations
                     b.ToTable("ProductBrands");
                 });
 
-            modelBuilder.Entity("Core.Entitties.ProductType", b =>
+            modelBuilder.Entity("Core.Entities.ProductType", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -45,7 +45,7 @@ namespace Infrastructure.Data.Migrations
                     b.ToTable("ProductTypes");
                 });
 
-            modelBuilder.Entity("Core.Entitties.product", b =>
+            modelBuilder.Entity("Core.Entities.product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -83,15 +83,15 @@ namespace Infrastructure.Data.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("Core.Entitties.product", b =>
+            modelBuilder.Entity("Core.Entities.product", b =>
                 {
-                    b.HasOne("Core.Entitties.ProductBrand", "ProductBrand")
+                    b.HasOne("Core.Entities.ProductBrand", "ProductBrand")
                         .WithMany()
                         .HasForeignKey("ProductBrandId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Core.Entitties.ProductType", "ProductType")
+                    b.HasOne("Core.Entities.ProductType", "ProductType")
                         .WithMany()
                         .HasForeignKey("ProductTypeId")
                         .OnDelete(DeleteBehavior.Cascade)

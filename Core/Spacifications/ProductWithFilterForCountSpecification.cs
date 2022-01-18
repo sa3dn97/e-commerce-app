@@ -1,5 +1,4 @@
 ﻿using Core.Entities;
-using Core.Entitties;
 using Core.Specification;
 
 namespace Core.Specifications

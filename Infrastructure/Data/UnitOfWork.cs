@@ -1,18 +1,18 @@
 using System;
 using System.Collections;
 using System.Threading.Tasks;
-using Core.Entitties;
+using Core.Entities;
 using Core.Interfaces;
 
 namespace Infrastructure.Data
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly EcommerceContext _context;
+        private readonly StoreContext _context;
 
         // Any repository is getting used as part UOW, will be store in hash table.
         private Hashtable _repositories; 
-        public UnitOfWork(EcommerceContext context)
+        public UnitOfWork(StoreContext context)
         {
             _context = context;
         }
@@ -27,7 +27,7 @@ namespace Infrastructure.Data
             _context.Dispose();
         }
 
-        public IEcommerceRepository<TEntity> Repository<TEntity>() where TEntity : BaseEntity
+        public IGenericRepository<TEntity> Repository<TEntity>() where TEntity : BaseEntity
         {
             if (_repositories == null) _repositories = new Hashtable();
 
@@ -37,13 +37,13 @@ namespace Infrastructure.Data
             // Check whether hash table contains entry with this name
             if (!_repositories.ContainsKey(type))
             {
-                var repositoryType = typeof(EcommerceRepository<>);
+                var repositoryType = typeof(GenericRepository<>);
                 // If we don't have a repository for this type, then create a instance of that repo
                 var repositoryInstance = Activator.CreateInstance(repositoryType.MakeGenericType(typeof(TEntity)), _context);
                 _repositories.Add(type, repositoryInstance);
             }
 
-            return (IEcommerceRepository<TEntity>) _repositories[type];
+            return (IGenericRepository<TEntity>) _repositories[type];
         }
     }
 }

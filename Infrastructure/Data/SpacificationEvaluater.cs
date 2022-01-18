@@ -1,5 +1,5 @@
 using System.Linq;
-using Core.Entitties;
+using Core.Entities;
 using Core.Spacifications;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,9 +19,9 @@ namespace Infrastructure.Data
             {
                 query = query.OrderBy(spec.OrderBy);
             }
-            if (spec.OrderByDecending != null)
+             if (spec.OrderByDescending != null)
             {
-                query = query.OrderByDescending(spec.OrderByDecending);
+                query = query.OrderByDescending(spec.OrderByDescending);
             }
             if(spec.IsPagingEnabled)
             {

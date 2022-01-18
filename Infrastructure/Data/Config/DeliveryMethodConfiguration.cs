@@ -8,7 +8,7 @@ namespace Infrastructure.Data.config
     {
         public void Configure(EntityTypeBuilder<DeliveryMethod> builder)
         {
-            builder.Property(d=>d.Price).HasColumnType("decimal(20,2)");
+            builder.Property(d=>d.Price).HasColumnType("decimal(18,2)");
         }
     }
 }
